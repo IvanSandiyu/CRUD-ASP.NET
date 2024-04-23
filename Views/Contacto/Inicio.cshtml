@@ -1,0 +1,55 @@
+﻿@model List<ProyectoASP.Models.Contacto>
+
+@{
+    ViewBag.Title = "Inicio";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" style="margin-top:30px">
+    <div class="col-sm-12">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h4>Lista de contactos</h4>
+            </div>
+            <div class="panel-body">
+                <a class="btn btn-success" href="@Url.Action("CrearContacto","Contacto")">Crear contacto</a>
+                <hr />
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Telefono</th>
+                                <th>Correo</th>
+                                <th style="width:150px"></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (ProyectoASP.Models.Contacto contacto in Model)
+                            {
+                            <tr>
+                                <td>@contacto.Nombre</td>
+                                <td>@contacto.Apellido</td>
+                                <td>@contacto.Telefono</td>
+                                <td>@contacto.Correo</td>
+                                <td>
+                                    <a class="btn btn-primary btn-sm" href="@Url.Action("Editar","Contacto",new { idContacto = contacto.idContacto })">Editar contacto</a>
+                                    <a class="btn btn-danger btn-sm" href="@Url.Action("Eliminar","Contacto",new { idContacto = contacto.idContacto })">Eliminar contacto</a>
+
+                                </td>
+
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
